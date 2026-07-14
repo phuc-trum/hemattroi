@@ -4,7 +4,7 @@ export function setupAudio() {
     const bgm = new Audio();
     
     // Đường dẫn trỏ tới file nhạc anh vừa chuẩn bị ở Bước 1
-    bgm.src = './audio/bgm.mp3'; 
+    bgm.src = './bgm.mp3'; 
     bgm.loop = true; // Tự động lặp lại khi hết bài
     bgm.volume = 0.35; // Âm lượng dịu nhẹ, vừa phải (tối đa là 1.0)
 
