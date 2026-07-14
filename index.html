@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô phỏng Hệ Mặt Trời - P-Space</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+          "@tweenjs/tween.js": "https://unpkg.com/@tweenjs/tween.js@21.0.0/dist/tween.esm.js"
+        }
+      }
+    </script>
+</head>
+<body>
+    <!-- MÀN HÌNH TẢI -->
+    <div id="loading-screen">
+        <div class="logo-container">
+            <div class="orbit-ring"></div>
+            <div class="logo-p">P</div>
+            <div class="logo-text">P-SPACE SYSTEM</div>
+        </div>
+        <div class="loading-bar-container"><div id="progress-bar"></div></div>
+        <div id="loading-text">Đang thiết lập không gian... (0%)</div>
+    </div>
+
+    <!-- ĐỒNG HỒ THỜI GIAN VŨ TRỤ -->
+    <div id="datetime-display">
+        <span id="date-text">Năm 0 | Tháng 1 | Ngày 1</span>
+        <span id="time-text">00:00</span>
+    </div>
+
+    <!-- NÚT QUAY LẠI CHUNG -->
+    <button id="back-btn" class="hidden">⬅ Quay lại Hệ Mặt Trời</button>
+
+    <!-- MENU SỰ KIỆN ĐẶC BIỆT (GÓC PHẢI) -->
+    <div id="special-events-panel" class="collapsed">
+        <button id="toggle-events-btn">◀ SỰ KIỆN</button>
+        <div class="events-content">
+            <h3 style="color: #00f0ff; margin-bottom: 5px; border-bottom: 1px solid rgba(0,240,255,0.3); padding-bottom: 10px;">HIỆN TƯỢNG THIÊN VĂN</h3>
+            <p style="font-size: 11px; color: #8899aa; margin-bottom: 15px;">(Menu cuộn tự động chống tràn màn hình)</p>
+            
+            <button class="event-btn" data-event="solar">☀️ Nhật thực toàn phần</button>
+            <button class="event-btn" data-event="lunar">🌕 Nguyệt thực (Trăng máu)</button>
+            <button class="event-btn" data-event="transit-mercury">☿️ Quá cảnh Sao Thủy</button>
+            <button class="event-btn" data-event="transit-venus">♀️ Quá cảnh Sao Kim</button>
+            <button class="event-btn" data-event="retrograde">🔄 Nghịch hành hành tinh</button>
+            <button class="event-btn" data-event="conjunction">🌌 Giao hội hành tinh</button>
+            <button class="event-btn" data-event="parade">🪐 Diễu hành hành tinh</button>
+            <button class="event-btn" data-event="comet">☄️ Sao chổi định kỳ</button>
+            <button class="event-btn" data-event="meteors">🌠 Mưa sao băng</button>
+            <button class="event-btn" data-event="zodiacal">✨ Ánh sáng Hoàng đạo</button>
+            
+            <button id="exit-event-btn" class="hidden" style="background: #ff3366; border-color: #ff5588; margin-top: 15px;">❌ Thoát quan sát sự kiện</button>
+        </div>
+    </div>
+
+    <!-- BẢNG THÔNG TIN (HÀNH TINH & SỰ KIỆN) -->
+    <div id="info-panel" class="hidden">
+        <h1 id="info-name">TÊN</h1>
+        <p id="info-type">Loại</p>
+        <img id="info-img" src="" alt="Planet" style="display: none;">
+        <p id="info-desc"></p>
+        <div class="info-section"><h3>Thông tin chi tiết</h3><ul id="info-physics"></ul></div>
+        <div class="info-section"><h3>Bối cảnh / Chu kỳ</h3><ul id="info-orbit"></ul></div>
+    </div>
+
+    <!-- BẢNG ĐIỀU KHIỂN DƯỚI CÙNG -->
+    <div id="time-controls-wrapper">
+        <button id="toggle-time-btn">▼ Thu gọn điều khiển</button>
+        <div id="time-controls">
+            <div class="btn-group">
+                <button id="btn-play">▶ Play</button>
+                <button id="btn-pause">⏸ Pause</button>
+                <button id="btn-reset">🔄 Reset</button>
+            </div>
+            <div class="slider-group">
+                <label>Tốc độ thời gian: <span id="speed-display">1x</span></label>
+                <input type="range" id="time-slider" min="-10" max="10" step="0.1" value="0">
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
